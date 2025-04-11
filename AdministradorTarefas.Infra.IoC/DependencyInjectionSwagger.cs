@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AdministradorTarefas.Util.Enums;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
 namespace AdministradorTarefas.Infra.Ioc;
@@ -14,6 +16,12 @@ public static class DependencyInjectionSwagger
                 Title = "AdministradorTarefas API",
                 Version = "v1",
                 Description = "Sistema de Administração de Tarefas"
+            });
+
+            c.MapType<StatusTarefa>(() => new OpenApiSchema
+            {
+                Type = "string",
+                Enum = Enum.GetNames(typeof(StatusTarefa)).Select(name => (IOpenApiAny)new OpenApiString(name)).ToList()
             });
         });
 

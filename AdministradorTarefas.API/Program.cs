@@ -10,6 +10,17 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") // Altere conforme necessário
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 // Infraestrutura e Swagger
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddInfrastructureSwagger();
@@ -56,6 +67,8 @@ app.UseSwaggerUI(c =>
 
 app.UseExceptionMiddleware();
 app.UseHttpsRedirection();
+
+app.UseCors("AllowFrontend");
 
 app.MapControllers();
 app.Run();
