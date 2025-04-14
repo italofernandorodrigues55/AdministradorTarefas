@@ -10,22 +10,19 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:4200") // Altere conforme necessário
+        policy.WithOrigins("*")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
 });
 
-// Infraestrutura e Swagger
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddInfrastructureSwagger();
 
-// Controllers + FluentValidation
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -39,7 +36,6 @@ builder.Services
 
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
-// ModelState personalizado
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.InvalidModelStateResponseFactory = context =>
@@ -57,7 +53,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
-// Swagger e Middlewares
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {

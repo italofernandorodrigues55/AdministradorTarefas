@@ -1,7 +1,6 @@
 ﻿using AdministradorTarefas.API.Utilities;
 using AdministradorTarefas.Application.DTOs.Tarefa;
 using AdministradorTarefas.Application.Interfaces;
-using AdministradorTarefas.Domain.Entities;
 using AdministradorTarefas.Util.Enums;
 using Microsoft.AspNetCore.Mvc;
 

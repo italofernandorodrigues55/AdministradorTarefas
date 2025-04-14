@@ -22,11 +22,13 @@ public class TarefaRepository : ITarefaRepository
             return await _context.Tarefas
                 .AsNoTracking()
                 .Where(c => c.Status == status)
+                .OrderBy(c => c.Id)
                 .ToListAsync();
         }
 
         return await _context.Tarefas
             .AsNoTracking()
+            .OrderBy(c => c.Id)
             .ToListAsync();
     }
 

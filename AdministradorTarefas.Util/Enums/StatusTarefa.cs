@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace AdministradorTarefas.Util.Enums;
+﻿namespace AdministradorTarefas.Util.Enums;
 
 public enum StatusTarefa
 {

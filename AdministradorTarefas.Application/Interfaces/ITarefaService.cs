@@ -1,5 +1,4 @@
 ﻿using AdministradorTarefas.Application.DTOs.Tarefa;
-using AdministradorTarefas.Domain.Entities;
 using AdministradorTarefas.Util.Enums;
 
 namespace AdministradorTarefas.Application.Interfaces;
